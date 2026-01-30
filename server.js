@@ -1,4 +1,12 @@
-require('dotenv').config();
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '.env') });
+
+// Debug: Verify environment variables are loaded
+console.log('🔍 Environment check:');
+console.log('   MONGODB_URI:', process.env.MONGODB_URI ? '✅ Loaded' : '❌ Missing');
+console.log('   NODE_ENV:', process.env.NODE_ENV || 'not set');
+console.log('   PORT:', process.env.PORT || 'not set');
+
 const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
